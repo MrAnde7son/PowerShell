@@ -1,8 +1,19 @@
-### PowerShellGoodies
+# PowerShellGoodies
 
-# Invoke-WideBruteForce
-Spray bruteforce script
+### Invoke-WideBruteForce
+Bruteforce spray attack with a given password.
 
-# Invoke-Hunting
+### Invoke-Hunting
 Searches for interesting stuff through a windows domain, such as weak password users, privileged users, sql users and more.
 
+### Authenticate-SQL
+Authenticates a remote sql server with a given credentials.
+
+### Get-GPODelegation
+Searches for users allowed for gpo delegation.
+
+### Get-WriteSPNUsers
+Searches for users with "Write SPN" ACL allowing them to write a service prinicipal name for a domain account.
+
+### Test-ADAuthentication
+Validates credentials of a domain user account.
