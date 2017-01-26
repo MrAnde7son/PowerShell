@@ -21,12 +21,6 @@ function Get-GPODelegation
     .PARAMETER GPOName
         The GPO display name to query for, wildcards accepted.  
 
-    .PARAMETER Domain
-
-    .PARAMETER DomainController
-
-    .PARAMETER ADSPath
-
     .PARAMETER PageSize
 
     .EXAMPLE 
@@ -57,10 +51,6 @@ function Get-GPODelegation
     )
 
     $Exclusions = @("SYSTEM","Domain Admins","Enterprise Admins","CREATOR OWNER")
-
-    if ($GPOName){
-
-    }
 
     $Forest = [System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()
     $DomainList = @($objForest.Domains)
