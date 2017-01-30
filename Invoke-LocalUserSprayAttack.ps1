@@ -22,12 +22,13 @@ function Invoke-LocalUserSprayAttack
     Password to use.
 
     .EXAMPLE 
-        PS C:\> Invoke-LocalUserSprayAttack
+        PS C:\> Invoke-LocalUserSprayAttack -Password Summer2016
         Returns users that were validated successfully
 
 #>
     [CmdletBinding()]
     Param (
+        [Parameter(Mandatory=$true)]
         [String]
         $Password = '*'
     )
