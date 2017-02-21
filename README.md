@@ -1,6 +1,6 @@
 # PowerShellGoodies
 
-### Invoke-WideBruteForce
+### Invoke-PasswordSpray
 Bruteforce spray attack with a given password.
 
 ### Invoke-Hunting
