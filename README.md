@@ -17,3 +17,6 @@ Searches for users with "Write SPN" ACL allowing them to write a service prinici
 
 ### Test-ADAuthentication
 Validates credentials of a domain user account.
+
+### Invoke-ACLScanner
+Scans and dumps the whole forest acl to csv.
