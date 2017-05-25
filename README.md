@@ -1,5 +1,3 @@
-# PowerShellGoodies
-
 ### Invoke-PasswordSpray
 Bruteforce spray attack with a given password.
 
@@ -20,3 +18,6 @@ Validates credentials of a domain user account.
 
 ### Invoke-ACLScanner
 Scans and dumps the whole forest acl to csv.
+
+### Remove-ObjectPermissions
+Removes the ability of a given active directory object to read privileged users properties.
