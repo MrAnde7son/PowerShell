@@ -8,7 +8,8 @@ function Remove-ObjectPermissions
 {
 <#
     .SYNOPSIS
-        Removes the ability of a given active directory object to read privileged users properties.
+        Denies all access (including read and list) from a given AD object on privileged domain accounts (Domain Admins, Administrators, Enterprise Admins).
+        This aims to make it harder for an adversary to map privileged users after he established the inital foothold over the network and got a non-privileged domain user.
 
         Author: Itamar Mizrahi (@MrAnde7son)
         License: GNU v3
