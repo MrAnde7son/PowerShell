@@ -21,3 +21,6 @@ Scans and dumps the whole forest acl to csv.
 
 ### Remove-ObjectPermissions
 Removes the ability of a given active directory object to read privileged users properties.
+
+### Invoke-PtHDetection
+Returns potentially Pth events through event log parsing.
