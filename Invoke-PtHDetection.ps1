@@ -9,7 +9,7 @@ function Invoke-PtHDetection
 {
 <#
     .SYNOPSIS
-        Returns a potentially Pth events through event log parsing. credit to @HackingDave for the detection technique.
+        Returns potentially Pth events through event log parsing. credit to @HackingDave for the detection technique.
         
         Author: Itamar Mizrahi (@Zecured)
         License: GNU v3
