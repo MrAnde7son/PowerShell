@@ -36,13 +36,13 @@ function Invoke-LocalUserSprayAttack
     $net = New-Object -ComObject WScript.Network
     $Users = @()
     $AllComputers= @()
-    $objForest = [System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()
-    $DomainList = @($objForest.Domains)
+    $Forest = [System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()
+    $DomainList = @($Forest.Domains)
     $Domains = $DomainList | foreach { $_.name }
     foreach ($Domain in $Domains)
     {
         $strFilter = "(objectCategory=Computer)"
-        $objDomain = New-Object System.DirectoryServices.DirectoryEntry
+        $objDomain = New-Object System.DirectoryServices.DirectoryEntry($Domain)
         $objSearcher = New-Object System.DirectoryServices.DirectorySearcher
         $objSearcher.SearchRoot = $objDomain
         $objSearcher.PageSize = 200
