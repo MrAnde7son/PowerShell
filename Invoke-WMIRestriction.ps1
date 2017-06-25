@@ -17,7 +17,7 @@
     .PARAMETER ComputerName
     Remote computer to edit ACL on.
 
-    .EXAMPLE Invoke-WMIRestriction -Username 
+    .EXAMPLE Invoke-WMIRestriction -Username
     Deny access for user specified on local computer
 
     .EXAMPLE Invoke-WMIRestriction -Username -ComputerName
@@ -32,7 +32,16 @@
         [string]$ComputerName = "."
     )
 
-    # Gets all user properties
+    # Gets all user properties, either local or domain accoun
+    $account = New-Object System.Security.Principal.NTAccount("$UserName")
+    try {
+    $SID = $account.Translate([System.Security.Principal.SecurityIdentifier])
+    }
+    catch {
+    $Domain = ""
+    if($Username -like '*\*'){
+        $Domain = New-Object System.DirectoryServices.DirectoryEntry("LDAP://$($Username.Split('\')[0])")
+    }
     $Searcher = New-Object System.DirectoryServices.DirectorySearcher
     $Searcher.filter = "(samaccountname=$Username)"
     $Searcher.SearchScope = "Subtree"
@@ -40,7 +49,7 @@
     $objectsid = [byte[]]($account.Properties.objectsid)[0]
     $SecurityIdentifier = New-Object System.Security.Principal.SecurityIdentifier $objectsid,0
     $SID = $SecurityIdentifier.translate([Security.Principal.SecurityIdentifier])
-
+    }
     # Initialize objects
     $Trustee = ([WMIClass] "Win32_Trustee").CreateInstance() 
     $Ace = ([WMIClass] "Win32_ACE").CreateInstance() 
@@ -52,11 +61,10 @@
     $Trustee.SidLength = $SID.BinaryLength
 
     $Ace.AccessMask = 393279 # ALL ACCESS
-    $Ace.AceFlags = 0
+    $Ace.AceFlags = 0x10
     $Ace.AceType = 1 # Deny
     $Ace.Trustee = $Trustee
 
-    # Adds ace to root namespace acl
     $GetSecurityDescriptor = Invoke-WmiMethod -ComputerName $ComputerName -Namespace "root" -Path "__SystemSecurity=@" -Name GetSecurityDescriptor
     if ($GetSecurityDescriptor.ReturnValue -ne 0){
         throw "GetSecurityDescriptor failed." + $GetSecurityDescriptor.ReturnValue
