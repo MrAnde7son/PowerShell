@@ -4,7 +4,7 @@
     .SYNOPSIS
         Modifies WMI root namespace ACL to deny all access of specific user, in order to mitigate WMI lateral movement of specific privileged users (not supposed to use WMI).
         
-        Author: Itamar Mizrahi (@Zecured)
+        Author: Itamar Mizrahi (@MrAnder7on)
         License: GNU v3
         Required Dependencies: None
         Optional Dependencies: None
