@@ -13,9 +13,6 @@ Searches for users allowed for gpo delegation.
 ### Get-WriteSPNUsers
 Searches for users with "Write SPN" ACL allowing them to write a service prinicipal name for a domain account.
 
-### Test-ADAuthentication
-Validates credentials of a domain user account.
-
 ### Invoke-ACLScanner
 Scans and dumps the whole forest acl to csv.
 
