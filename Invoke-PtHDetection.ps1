@@ -1,5 +1,5 @@
 ﻿<#
-    Author: Itamar Mizrahi (@Zecured)
+    Author: Itamar Mizrahi (@MrAnde7son)
     License: GNU v3
     Required Dependencies: None
     Optional Dependencies: None
@@ -11,7 +11,7 @@ function Invoke-PtHDetection
     .SYNOPSIS
         Returns potentially Pth events through event log parsing. credit to @HackingDave for the detection technique.
         
-        Author: Itamar Mizrahi (@Zecured)
+        Author: Itamar Mizrahi (@MrAnde7son)
         License: GNU v3
         Required Dependencies: None
         Optional Dependencies: None
