@@ -1,5 +1,5 @@
 ﻿<#
-    Author: Itamar Mizrahi (@Zecured)
+    Author: Itamar Mizrahi (@MrAnde7son)
     License: GNU v3
     Required Dependencies: None
     Optional Dependencies: None
@@ -8,7 +8,7 @@ Function Invoke-PrefetchParser{
 <#
     .SYNOPSIS
         Parses prefetch files on live system and returns the result.
-        Author: Itamar Mizrahi (@Zecured)
+        Author: Itamar Mizrahi (@MrAnde7son)
         License: GNU v3
         Required Dependencies: None
         Optional Dependencies: None
