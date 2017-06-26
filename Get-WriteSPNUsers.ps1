@@ -1,5 +1,5 @@
 ﻿<#
-    Author: Itamar Mizrahi (@Zecured)
+    Author: Itamar Mizrahi (@MrAnde7son)
     License: GNU v3
     Required Dependencies: None
     Optional Dependencies: None
@@ -10,7 +10,7 @@ function Get-WriteSPNUsers
 <#
     .SYNOPSIS
         Searches and prints users with "Write servicePrincipalName" right.
-        Author: Itamar Mizrahi (@Zecured)
+        Author: Itamar Mizrahi (@MrAnde7son)
         License: GNU v3
         Required Dependencies: None
         Optional Dependencies: None
