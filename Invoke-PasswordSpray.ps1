@@ -1,5 +1,5 @@
 ﻿<#
-    Author: Itamar Mizrahi (@Zecured)
+    Author: Itamar Mizrahi (@MrAnde7son)
     License: GNU v3
     Required Dependencies: None
     Optional Dependencies: None
@@ -10,7 +10,7 @@ function Invoke-PasswordSpray
 <#
     .SYNOPSIS
         This tool tries a given password on all the users within the current directory (the entire forest).
-        Author: Itamar Mizrahi (@Zecured)
+        Author: Itamar Mizrahi (@MrAnde7son)
         License: GNU v3
         Required Dependencies: None
         Optional Dependencies: None
