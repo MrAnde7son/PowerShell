@@ -3,7 +3,7 @@ Function Autheticate-SQL
     <#
     .SYNOPSIS
         This tool provides an easy way, once inside a Windows network, to try and achieve a privileged domain user account.
-        Author: Itamar Mizrahi (@Zecured)
+        Author: Itamar Mizrahi (@MrAnde7son)
         License: GNU v3
         Required Dependencies: None
         Optional Dependencies: None
