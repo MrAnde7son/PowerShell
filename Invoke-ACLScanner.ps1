@@ -29,7 +29,7 @@ function Invoke-ACLScanner
     Param (
         [Parameter( Position = 0)]
         [String]
-        $OutFile,
+        $OutFile = '',
 
         [Parameter( Position = 1)]
         [String]
@@ -90,7 +90,7 @@ foreach ($entry in $Results){
             $extendedRight | Add-Member NoteProperty 'IsInherited' $right.IsInherited
             $extendedRight | Add-Member NoteProperty 'InheritanceFlags' $right.InheritanceFlags
             $extendedRight | Add-Member NoteProperty 'PropagationFlags' $right.None
-            if($OutFile -ne $null) {
+            if($OutFile -ne '') {
                 $extendedRight | Export-Csv -Path $OutFile -Append -force
                 }
             else {
