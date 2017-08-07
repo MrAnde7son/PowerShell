@@ -60,7 +60,6 @@ foreach ($Domain in $DomainList){
     $Searcher = New-Object System.DirectoryServices.DirectorySearcher($Domain)
     $Filter = "(objectCategory=*)"
     $Searcher.Filter = $Filter
-    $Searcher.SearchRoot = $Domain
     $Searcher.PageSize = 1000
     $Searcher.SearchScope = "Subtree"
     $Results += $Searcher.FindAll()
