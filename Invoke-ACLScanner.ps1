@@ -57,7 +57,7 @@ $ACEDictionary += $entry
 $DomainList = @($Forest.Domains | % {$_.GetDirectoryEntry() })
 $Results = @()
 foreach ($Domain in $DomainList){
-    $Searcher = New-Object System.DirectoryServices.DirectorySearcher
+    $Searcher = New-Object System.DirectoryServices.DirectorySearcher($Domain)
     $Filter = "(objectCategory=*)"
     $Searcher.Filter = $Filter
     $Searcher.SearchRoot = $Domain
