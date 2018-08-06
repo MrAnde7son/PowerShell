@@ -67,5 +67,5 @@ function Get-GPODelegation
             }
         }
     }
-    $Results
+    return $Results
 }
